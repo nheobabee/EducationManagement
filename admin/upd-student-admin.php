@@ -78,7 +78,7 @@
                         </div>
                     </nav>
                     <div class="container">
-                        <h2>ADD TEACHER</h2>
+                        <h2>UPDATE STUDENT</h2>
                         <form method="post">
                             <?php
                             if (isset($_POST['add'])) {
@@ -129,7 +129,7 @@
                                 <input type="text" class="form-control" id="addressSV" placeholder="Enter address" name="addressSV"  value="<?php echo $addressSV?>">
                             </div>
                             <br>
-                            <button name="add" type="submit" class="btn btn-success">ADD</button>
+                            <button name="add" type="submit" class="btn btn-success">UPDATE</button>
                         </form>
                     </div>
                 </div>
