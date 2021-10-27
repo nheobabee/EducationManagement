@@ -1,11 +1,8 @@
-<?php
-session_start(); 
-?>
-<title>TEACHER</title>
+<title>HOMEWORK</title>
 <?php include('../config/config.php'); ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="../css/teacher-admin.css">
+<link rel="stylesheet" href="../css/btvn-admin.css">
 
 <div id="wrapper">
 
@@ -55,6 +52,7 @@ session_start();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+
                     <nav class="navbar navbar-light">
                         <div class="container-fluid">
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fas fa-bars"></i></a>
@@ -69,69 +67,47 @@ session_start();
                         </div>
                     </nav>
                     <div class="container">
-                        <br>
-                        <a href="./add-teacher.php"><button class="btn btn-success"> ADD TEACHER</button></a>
-                        <?php
-                            if(isset($_SESSION['errorDel'])){
-                                echo $_SESSION['errorDel'];
-                                unset($_SESSION['errorDel']);
-                            }
-                            if(isset($_SESSION['successDel'])){
-                                echo $_SESSION['successDel'];
-                                unset($_SESSION['successDel']);
-                            }
-                        ?>
-                        <br><br>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Gender</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">SDT</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Homework</th>
+                                    <th scope="col">Format</th>
+                                    <th scope="col">Opened</th>
+                                    <th scope="col">Deadline</th>
+                                    <th scope="col">Note</th>
+                                    <th scope="col">Details</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * from giaovien";
+                                $sql = "SELECT * from btvn,monhoc where btvn.idMH = monhoc.idMH";
                                 $res = mysqli_query($conn, $sql);
                                 $sn = 1;
                                 if ($res == true) {
                                     while ($row = mysqli_fetch_assoc($res)) {
-                                        $genderGV = $row['genderGV'];
-                                        $idGV = $row['idGV'];
+                                        $idMH = $row['idMH'];
+                                        $idBTVN = $row['idBTVN'];
                                 ?>
                                         <tr>
-                                            <td><?php echo $sn++ ?></td>
-                                            <td><?php echo $row['nameGV']; ?></td>
-                                            <td>
-                                                <?php if ($genderGV == 1) {
-                                                    echo 'Nam';
-                                                }
-                                                if ($genderGV == 0) {
-                                                    echo 'Nữ';
-                                                }
-                                                ?>
-                                            </td>
-                                            <td><?php echo $row['emailGV']; ?></td>
-                                            <td><?php echo $row['sdtGV']; ?></td>
-                                            <td><?php echo $row['addressGV']; ?></td>
-                                            <td>
-                                                <a href="./upd-teacher-admin.php?idGV=<?php echo $row['idGV']; ?>"><button type="button" class="btn btn-primary text-white me-2"><i class="fas fa-user-edit"></i></button></a>
-                                            </td>
 
+                                            <td><?php echo $sn++ ?></td>
+                                            <td><?php echo $row['nameMH']; ?></td>
+                                            <td><?php echo $row['nameBTVN']; ?></td>
+                                            <td><?php echo $row['formatBTVN']; ?></td>
+                                            <td><?php echo $row['openedBTVN']; ?></td>
+                                            <td><?php echo $row['deadlineBTVN']; ?></td>
+                                            <td><?php echo $row['note']; ?></td>
                                             <td>
-                                                <a href="./del-teacher-admin.php?idGV=<?php echo $row['idGV']; ?>"><button type="button" class="btn btn-danger text-white me-2"><i class="fas fa-user-minus"></i></button></a>
+                                                <a href="http://localhost/EducationManagement/admin/details-btvn-admin.php?idMH=<?php echo $idMH ?>&&idBTVN=<?php echo $idBTVN ?>"><button type="button" class="btn btn-info text-white me-2"><i class="fas fa-list-alt"></i></button></a>
                                             </td>
                                         </tr>
                                 <?php
                                     }
                                 }
+
                                 ?>
                             </tbody>
                         </table>

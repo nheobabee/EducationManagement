@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','csdl');
+$conn = mysqli_connect('localhost','root','','cnw');
 
 ?>

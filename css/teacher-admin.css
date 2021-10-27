@@ -3,7 +3,13 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-.row>* {
+ .success{
+     color: #2ed573;
+ }
+ .error{
+     color: #ff4757;
+ }
+ .row>* {
     padding : 0;
 }
  body {
@@ -166,7 +172,6 @@
 h1.count{
     margin-top:30px
 }
-/* Details- btvn- admin */
-.tittle-btvn{
-  background-color:#fff;
+.container{
+    min-height: 521px;
 }

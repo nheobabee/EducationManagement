@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 ?>
-<title>TEACHER</title>
+<title>STUDENT</title>
 <?php include('../config/config.php'); ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -70,7 +70,7 @@ session_start();
                     </nav>
                     <div class="container">
                         <br>
-                        <a href="./add-teacher.php"><button class="btn btn-success"> ADD TEACHER</button></a>
+                        <a href="./add-student-admin.php"><button class="btn btn-success"> ADD STUDENT</button></a>
                         <?php
                             if(isset($_SESSION['errorDel'])){
                                 echo $_SESSION['errorDel'];
@@ -98,35 +98,35 @@ session_start();
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * from giaovien";
+                                $sql = "SELECT * from sinhvien";
                                 $res = mysqli_query($conn, $sql);
                                 $sn = 1;
                                 if ($res == true) {
                                     while ($row = mysqli_fetch_assoc($res)) {
-                                        $genderGV = $row['genderGV'];
-                                        $idGV = $row['idGV'];
+                                        $genderSV = $row['genderSV'];
+                                        $idSV = $row['idSV'];
                                 ?>
                                         <tr>
                                             <td><?php echo $sn++ ?></td>
-                                            <td><?php echo $row['nameGV']; ?></td>
+                                            <td><?php echo $row['nameSV']; ?></td>
                                             <td>
-                                                <?php if ($genderGV == 1) {
+                                                <?php if ($genderSV == 1) {
                                                     echo 'Nam';
                                                 }
-                                                if ($genderGV == 0) {
+                                                if ($genderSV == 0) {
                                                     echo 'Nữ';
                                                 }
                                                 ?>
                                             </td>
-                                            <td><?php echo $row['emailGV']; ?></td>
-                                            <td><?php echo $row['sdtGV']; ?></td>
-                                            <td><?php echo $row['addressGV']; ?></td>
+                                            <td><?php echo $row['emailSV']; ?></td>
+                                            <td><?php echo $row['sdtSV']; ?></td>
+                                            <td><?php echo $row['addressSV']; ?></td>
                                             <td>
-                                                <a href="./upd-teacher-admin.php?idGV=<?php echo $row['idGV']; ?>"><button type="button" class="btn btn-primary text-white me-2"><i class="fas fa-user-edit"></i></button></a>
+                                                <a href="./upd-student-admin.php?idSV=<?php echo $row['idSV']; ?>"><button type="button" class="btn btn-primary text-white me-2"><i class="fas fa-user-edit"></i></button></a>
                                             </td>
 
                                             <td>
-                                                <a href="./del-teacher-admin.php?idGV=<?php echo $row['idGV']; ?>"><button type="button" class="btn btn-danger text-white me-2"><i class="fas fa-user-minus"></i></button></a>
+                                                <a href="./del-student-admin.php?idSV=<?php echo $row['idSV']; ?>"><button type="button" class="btn btn-danger text-white me-2"><i class="fas fa-user-minus"></i></button></a>
                                             </td>
                                         </tr>
                                 <?php
