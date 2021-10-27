@@ -3,7 +3,9 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-
+.row>* {
+    padding : 0;
+}
  body {
     overflow-x: hidden;
  }
@@ -17,7 +19,14 @@
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
-
+.navbar-brand {
+    font-size:17px;
+    font-weight:500;
+}
+#page-content-wrapper {
+    padding: 50px;
+    position: relative;
+}
 #wrapper.toggled {
     padding-left: 250px;
 }
@@ -119,7 +128,7 @@
     }
 
     #page-content-wrapper {
-        padding: 20px;
+        padding: 0;
         position: relative;
     }
 
@@ -127,4 +136,16 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+/* Dashboard */
+.col{
+    border: 1px solid #000; 
+    margin:1%;
+    height: 200px;
+    border-radius:4px;
+}
+.header-page {
+    display: flex;
+    justify-content: space-between;
 }

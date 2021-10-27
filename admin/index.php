@@ -1,6 +1,5 @@
 <?php include('../config/config.php'); ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="../css/style.css">
 
@@ -16,7 +15,7 @@
                 <a href="#">Dashboard</a>
             </li>
             <li>
-                <a href="#">Teacher</a>
+                <a href="teacher.php">Teacher</a>
             </li>
             <li>
                 <a href="#">BTVN</a>
@@ -42,70 +41,109 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    
+
                     <nav class="navbar navbar-light bg-light">
                         <div class="container-fluid">
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fas fa-bars"></i></a>
-                            
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fas fa-bars"></i></a>
+
                             <form class="d-flex">
-                                <a href="" class="navbar-brand">Home</a>
-                                <a href="" class="navbar-brand">Account</a>
-                                <a href="" class="navbar-brand">Logout</a>
+                                <a href="" class="navbar-brand">HOME</a>
+                                <a href="" class="navbar-brand">ACCOUNT</a>
+                                <a href="" class="navbar-brand">LOGOUT</a>
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </form>
                         </div>
                     </nav>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">idGV</th>
-                                <th scope="col">nameGV</th>
-                                <th scope="col">genderGV</th>
-                                <th scope="col">emailGV</th>
-                                <th scope="col">sdtGV</th>
-                                <th scope="col">addressGV</th>
+                    <div class="main-content">
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $sql = "SELECT * from giaovien";
-                                $res = mysqli_query($conn,$sql);
-                                if($res == true){
-                                    $row = mysqli_fetch_assoc($res);
-                                    $idGV = $row['idGV'];
-                                    $nameGV = $row['nameGV'];
-                                    $genderGV = $row['genderGV'];
-                                    $emailGV = $row['emailGV'];
-                                    $sdtGV = $row['sdtGV'];
-                                    $addressGV = $row['addressGV'];
-                                }
-                            ?>
-                            <tr>
-                               
-                                <td><?php echo $idGV; ?></td>
-                                <td><?php echo $nameGV; ?></td>
-                                <td><?php echo $genderGV; ?></td>
-                                <td><?php echo $emailGV; ?></td>
-                                <td><?php echo $sdtGV; ?></td>
-                                <td><?php echo $addressGV; ?></td>
-                            </tr>
-    
-                        </tbody>
-                    </table>
+                        <div class="container">
+
+                            <div class="header-page">
+                                <h1 class="page-title">Dashboard</h1>
+                         
+                              <!--  -->
+                                <p style="float:right;">Xin chào</p>
+                            </div>
+                            <br><br>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <?php
+                                    $sql1 = "SELECT * FROM giaovien";
+                                    $res1 = mysqli_query($conn, $sql1);
+                                    $count1 = mysqli_num_rows($res1);
+                                    ?>
+                                    <h1><?php echo $count1 ?></h1>
+                                    <br>
+                                    <p>Teacher</p>
+                                </div>
+                                <div class="col text-center">
+                                    <?php
+                                    $sql2 = "SELECT * FROM sinhvien";
+                                    $res2 = mysqli_query($conn, $sql2);
+                                    $count2 = mysqli_num_rows($res2);
+                                    ?>
+                                    <h1><?php echo $count2 ?></h1>
+                                    <br>
+                                    <p>Student</p>
+                                </div>
+                                <div class="col text-center">
+                                    <?php
+                                    $sql3 = "SELECT * FROM btvn";
+                                    $res3 = mysqli_query($conn, $sql3);
+                                    $count3 = mysqli_num_rows($res3);
+                                    ?>
+                                    <h1><?php echo $count3 ?></h1>
+                                    <br>
+                                    <p>BTVN</p>
+                                </div>
+                                <div class="col text-center">
+                                    <?php
+                                    $sql4 = "SELECT * FROM btl";
+                                    $res4 = mysqli_query($conn, $sql4);
+                                    $count4 = mysqli_num_rows($res4);
+                                    ?>
+                                    <h1><?php echo $count4 ?></h1>
+                                    <br>
+                                    <p>BTL</p>
+                                </div>
+                                <div class="col text-center">
+                                    <?php
+                                    $sql5 = "SELECT * FROM monhoc";
+                                    $res5 = mysqli_query($conn, $sql5);
+                                    $count5 = mysqli_num_rows($res5);
+                                    ?>
+                                    <h1><?php echo $count5 ?></h1>
+                                    <br>
+                                    <p>Subject</p>
+                                </div>
+                                <div class="col text-center">
+                                    <?php
+                                    $sql6 = "SELECT * FROM ketquabtl, ketquabtvn";
+                                    $res6 = mysqli_query($conn, $sql6);
+                                    $count6 = mysqli_num_rows($res6);
+                                    ?>
+                                    <h1><?php echo $count6 ?></h1>
+                                    <br>
+                                    <p>Result</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
+</div>
+<!-- /#page-content-wrapper -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
 </div>
 <!-- /#wrapper -->
